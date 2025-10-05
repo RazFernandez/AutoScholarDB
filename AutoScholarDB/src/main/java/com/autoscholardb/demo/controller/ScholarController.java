@@ -20,19 +20,24 @@ public class ScholarController {
         this.scholarService = scholarService;
     }
 
-@GetMapping("/api/scholar")
-public ResponseEntity<?> fetchScholar(
-        @RequestParam String authorId,
-        @RequestParam String apiKey
-) {
-    try {
-        JsonObject result = scholarService.fetchAuthorArticlesApi(authorId, apiKey).join();
-        // Convert JsonObject → Map
-        Map<String, Object> map = new Gson().fromJson(result, new com.google.gson.reflect.TypeToken<Map<String, Object>>(){}.getType());
-        return ResponseEntity.ok(map);
-    } catch (Exception e) {
-        Map<String, String> error = Map.of("error", e.getMessage());
-        return ResponseEntity.status(500).body(error);
+    @GetMapping("/api/scholar")
+    public ResponseEntity<?> fetchScholar(
+            // Removed @RequestParam String apiKey
+            @RequestParam String authorId) {
+        try {
+            // Updated the service call to only pass authorId
+            JsonObject result = scholarService.fetchAuthorArticlesApi(authorId).join();
+
+            // Convert JsonObject → Map
+            Map<String, Object> map = new Gson().fromJson(result,
+                    new com.google.gson.reflect.TypeToken<Map<String, Object>>() {
+                    }.getType());
+            return ResponseEntity.ok(map);
+        } catch (Exception e) {
+            // Handle exceptions, which now includes the API key check from the service
+            // layer
+            Map<String, String> error = Map.of("error", e.getMessage());
+            return ResponseEntity.status(500).body(error);
+        }
     }
-}
 }
