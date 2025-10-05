@@ -12,11 +12,11 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 @RestController
-public class ScholarController {
+public class AuthorInfoController {
 
     private final ScholarService scholarService;
 
-    public ScholarController(ScholarService scholarService) {
+    public AuthorInfoController(ScholarService scholarService) {
         this.scholarService = scholarService;
     }
 

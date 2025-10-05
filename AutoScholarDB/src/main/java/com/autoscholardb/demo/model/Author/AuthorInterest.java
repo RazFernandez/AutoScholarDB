@@ -1,4 +1,4 @@
-package com.autoscholardb.demo.model;
+package com.autoscholardb.demo.model.Author;
 
 public class AuthorInterest {
     private String title;
