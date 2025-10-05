@@ -3,6 +3,7 @@ package com.autoscholardb.demo.model.Articles;
 public class Article {
     private String title;
     private String publication;
+    private String link;
     private String year;
     private CitedBy citedBy; // Using the CitedBy DTO for the value
     private String authors; // Assumes authors is a single string as in your example
@@ -22,6 +23,14 @@ public class Article {
 
     public void setPublication(String publication) {
         this.publication = publication;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getYear() {

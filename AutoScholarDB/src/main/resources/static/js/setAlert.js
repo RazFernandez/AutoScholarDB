@@ -24,6 +24,7 @@ function createAuthorTableHTML(authorInfo) {
                     <th>Title</th>
                     <th>Authors</th>
                     <th>Publication</th>
+                    <th>Link</th>
                     <th>Year</th>
                     <th>Cited By</th>
                 </tr>
@@ -42,6 +43,7 @@ function createAuthorTableHTML(authorInfo) {
                     <td>${article.title || 'N/A'}</td>
                     <td>${article.authors || 'N/A'}</td>
                     <td>${article.publication || 'N/A'}</td>
+                    <td><a href="${article.link}" target="_blank">${article.link || 'N/A'}</a></td>
                     <td>${article.year || 'N/A'}</td>
                     <td>${citedByValue}</td>
                 </tr>
