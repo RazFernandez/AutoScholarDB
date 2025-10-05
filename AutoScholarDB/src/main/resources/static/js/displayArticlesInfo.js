@@ -21,6 +21,7 @@ function createAuthorTableHTML(authorInfo) {
         <table>
             <thead>
                 <tr>
+                    <th>Save in Database</th>
                     <th>Title</th>
                     <th>Authors</th>
                     <th>Publication</th>
@@ -40,6 +41,7 @@ function createAuthorTableHTML(authorInfo) {
 
             html += `
                 <tr>
+                    <td><button type="button">Add</button></td>
                     <td>${article.title || 'N/A'}</td>
                     <td>${article.authors || 'N/A'}</td>
                     <td>${article.publication || 'N/A'}</td>
