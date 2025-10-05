@@ -1,14 +1,16 @@
-package com.autoscholardb.demo.model;
+package com.autoscholardb.demo.model.Author;
 
 import java.util.List;
+
+import com.autoscholardb.demo.model.Articles.Article;
 
 public class AuthorInfo {
     private String name;
     private String affiliations;
     private String email;
     private String website;
-    private String thumbnail;
     private List<AuthorInterest> interests;
+    private List<Article> articles;
 
     // Getters and Setters
     public String getName() {
@@ -43,19 +45,20 @@ public class AuthorInfo {
         this.website = website;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
     public List<AuthorInterest> getInterests() {
         return interests;
     }
 
     public void setInterests(List<AuthorInterest> interests) {
         this.interests = interests;
+    }
+
+     // Getters and Setters for articles
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

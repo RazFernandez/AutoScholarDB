@@ -1,5 +1,6 @@
 package com.autoscholardb.demo.services;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.net.http.HttpClient;
@@ -19,11 +20,13 @@ import com.google.gson.JsonParser;
 
 /**
  * Service to fetch Google Scholar Author data via SerpAPI.
- * Method: fetchAuthotArticlesApi(String authorId, String apiKey)
+ * Method: fetchAuthorArticlesApi(String authorId)
  *
  * - Uses Java 11+ HttpClient (native)
  * - Uses Gson for JSON parsing
  * - Returns CompletableFuture<JsonObject> so it can be mapped to a model later
+ * - SerpAPI key is injected via Spring's @Value, eliminating it as a method
+ * parameter.
  */
 @Service
 public class ScholarService {
@@ -31,6 +34,10 @@ public class ScholarService {
     private final HttpClient httpClient;
     @SuppressWarnings("unused")
     private final Gson gson;
+
+    // 1. Inject the API key from application.properties
+    @Value("${serp.api.key}")
+    private String serpApiKey;
 
     public ScholarService() {
         this.httpClient = HttpClient.newBuilder()
@@ -41,28 +48,30 @@ public class ScholarService {
 
     /**
      * Fetch author + articles from SerpAPI (google_scholar_author).
-     * Instead of printing, returns a JsonObject that can be mapped to a model
-     * later.
      *
      * @param authorId Google Scholar author id (e.g. 4bahYMkAAAAJ)
-     * @param apiKey   SerpAPI API key
      * @return CompletableFuture<JsonObject> with the parsed JSON response
      */
-    public CompletableFuture<JsonObject> fetchAuthorArticlesApi(String authorId, String apiKey) {
+    // 2. Removed 'String apiKey' from the method signature
+    public CompletableFuture<JsonObject> fetchAuthorArticlesApi(String authorId) {
         if (authorId == null || authorId.isBlank()) {
             CompletableFuture<JsonObject> failed = new CompletableFuture<>();
             failed.completeExceptionally(new IllegalArgumentException("authorId is required and cannot be blank"));
             return failed;
         }
-        if (apiKey == null || apiKey.isBlank()) {
+
+        // 3. Check the injected key (important for safety)
+        if (serpApiKey == null || serpApiKey.isBlank()) {
             CompletableFuture<JsonObject> failed = new CompletableFuture<>();
-            failed.completeExceptionally(new IllegalArgumentException("apiKey is required and cannot be blank"));
+            failed.completeExceptionally(
+                    new IllegalStateException("SerpAPI key is not configured. Check 'serp.api.key' property."));
             return failed;
         }
 
         try {
             String encodedAuthorId = URLEncoder.encode(authorId, StandardCharsets.UTF_8);
-            String encodedApiKey = URLEncoder.encode(apiKey, StandardCharsets.UTF_8);
+            // 4. Use the injected serpApiKey directly
+            String encodedApiKey = URLEncoder.encode(serpApiKey, StandardCharsets.UTF_8);
 
             String url = String.format(
                     "https://serpapi.com/search.json?engine=google_scholar_author&author_id=%s&api_key=%s&hl=en",
