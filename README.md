@@ -140,3 +140,16 @@ This project follows the **Model-View-Controller (MVC)** pattern layered over a 
 
 ---
 
+## 🌱 Sustainability & Long-Term Benefits
+
+The AutoScholarDB project is designed with sustainability and long-term maintainability in mind. Its automated pipeline and modular architecture ensure that the system remains useful and efficient over time. Key factors include:
+
+- **Resource Efficiency:** By automating data collection and integration, the system reduces manual labor and the time required for staff to gather, validate, and input researcher data.
+- **Maintainable Architecture:** The MVC pattern and separation of concerns allow future developers to easily modify, extend, or replace components without disrupting the entire system.
+- **Scalability:** The use of PostgreSQL and Spring Boot allows the system to scale as the number of researchers, articles, and requests grows.
+- **Data Integrity & Accuracy:** Automation minimizes human error, ensuring the research database remains reliable, which is critical for institutional decision-making.
+- **Environmental Considerations:** Reduced paper usage and minimized repetitive manual tasks lower the operational carbon footprint, promoting a more sustainable research management process.
+- **Open Documentation & Version Control:** Thorough documentation and Git version control ensure that knowledge is preserved, allowing long-term continuity even if team members change.
+
+By combining these aspects, AutoScholarDB not only supports the Innovation Center’s immediate needs but also provides a sustainable solution that can evolve with institutional requirements.
+
