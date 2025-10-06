@@ -132,9 +132,11 @@ This project follows the **Model-View-Controller (MVC)** pattern layered over a 
 
 | Document | Description | Status |
 |-----------|--------------|---------|
-| **API Design** | Detailed specification of REST endpoints and request/response models. | [Placeholder Link]() |
-| **Database Model** | Entity Relationship Diagram (ERD) showing the `scholarly_articles` table and relationships. | [Placeholder Link]() |
-| **Use Case Diagram** | Visual representation of user interactions (Search Author, View DB, Save Article). | [Placeholder Link]() |
-| **Budget** | Financial breakdown and resource allocation for the project. | [Placeholder Link]() |
+| **API Design** | Detailed specification of REST endpoints and request/response models. | [Link](https://github.com/RazFernandez/AutoScholarDB/blob/main/Docs/AutoScholarDB_API_Design.md) |
+| **Database Model** | Entity Relationship Diagram (ERD) showing the `scholarly_articles` table and relationships. | [Link](https://github.com/RazFernandez/AutoScholarDB/blob/main/Docs/database-model.md) |
+| **User Diagram** | Visual diagram to respent the actors and main features on the system | [Link](https://github.com/RazFernandez/AutoScholarDB/blob/main/Docs/user-case-diagram.md)|
+| **User manual** | Manual for new user who use this webpage. | [Link](https://github.com/RazFernandez/AutoScholarDB/blob/main/Docs/user-manual.md) |
+| **Budget** | Financial breakdown and resource allocation for the project. | [Link](https://docs.google.com/spreadsheets/d/10F8Z9fK3ypQaWO7WCvrfODMM9xwwthD7Xjip0uGMlGs/edit?gid=2146888974#gid=2146888974) |
 
 ---
+
