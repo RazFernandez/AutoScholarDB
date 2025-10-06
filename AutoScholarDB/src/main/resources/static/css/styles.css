@@ -1,0 +1,193 @@
+/* Global Reset and Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #1e40af; /* Tailwind blue-700 */
+    --accent-color: #3b82f6;  /* Tailwind blue-500 */
+    --text-color: #1f2937;    /* Tailwind gray-800 */
+    --background-color: #f9fafb; /* Tailwind gray-50 */
+    --border-color: #d1d5db; /* Tailwind gray-300 */
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Main Container for Centering */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
+    border-radius: 12px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 30px;
+    background-color: #fefefe;
+}
+
+label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+input[type="text"] {
+    padding: 12px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+button[type="submit"] {
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    align-self: flex-start; /* Align button to the left */
+}
+
+button[type="submit"]:hover {
+    background-color: #102a83; /* Darker shade */
+    transform: translateY(-1px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Content Display Area */
+#api-content {
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+/* Headings and Paragraphs */
+h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+/* Table Styling */
+#api-content table {
+    width: 100%;
+    border-collapse: separate; /* Use separate for rounded corners */
+    border-spacing: 0;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures content respects rounded borders */
+}
+
+#api-content th, #api-content td {
+    padding: 12px 15px;
+    border: none; /* Remove default borders */
+}
+
+#api-content th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Zebra Stripes for readability */
+#api-content tbody tr:nth-child(even) {
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+}
+
+#api-content tbody tr:hover {
+    background-color: #e5e7eb; /* Tailwind gray-200 */
+    transition: background-color 0.2s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    /* Stack table columns on smaller screens */
+    #api-content table, 
+    #api-content thead, 
+    #api-content tbody, 
+    #api-content th, 
+    #api-content td, 
+    #api-content tr {
+        display: block;
+    }
+    
+    #api-content thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #api-content tr {
+        border: 1px solid var(--border-color);
+        margin-bottom: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    #api-content td {
+        border: none;
+        position: relative;
+        padding-left: 50%; /* Space for the label */
+        text-align: right;
+    }
+
+    /* Add labels to table cells using data-label attribute (needs JS update) */
+    /* Since we can't update the JS to add data-labels easily here, we'll keep 
+       the responsive table simple or rely on horizontal scroll if content is too wide. 
+       For now, let's keep the table layout but add overflow-x: auto to the container. */
+}
+
+/* Ensure table fits horizontally on small screens if standard table layout is kept */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
