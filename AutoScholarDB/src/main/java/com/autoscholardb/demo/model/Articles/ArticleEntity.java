@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 // This entity maps directly to the PostgreSQL table
@@ -22,8 +23,10 @@ public class ArticleEntity {
     @Column(name = "authors", nullable = false)
     private String authors;
 
+    // This column holds the combined publication name and year (e.g., "Annals of
+    // Physics, 1905")
     @Column(name = "publication_date")
-    private String publicationDate; // Mapped to publication_date
+    private String publicationDate;
 
     @Column(name = "abstract")
     private String abstractText; // Renamed to avoid keyword conflict
